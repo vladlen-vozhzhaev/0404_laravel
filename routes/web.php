@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ArticleController::class, 'getArticles']);
+Route::get('/hello', function (){
+    return "Hello";
+});
 Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
 Route::view('/addArticle', 'pages.addArticle')->middleware('auth');
 Route::post('/addArticle', [ArticleController::class, 'addArticle'])->middleware('auth');
