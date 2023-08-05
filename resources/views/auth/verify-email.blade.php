@@ -1,22 +1,19 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+@extends('tepmplate')
+@section('title', 'Подтверждение Email')
+@section('content')
+    <div>
+        Спасибо за регистрацию! Прежде чем начать, не могли бы вы подтвердить свой адрес электронной почты, перейдя по ссылке, которую мы только что отправили вам по электронной почте? Если вы не получили электронное письмо, мы с радостью вышлем вам другое.
     </div>
-
     @if (session('status') == 'verification-link-sent')
         <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+            {{ __('На адрес электронной почты, который вы указали при регистрации, была отправлена новая ссылка для подтверждения.') }}
         </div>
     @endif
-
     <div class="mt-4 flex items-center justify-between">
         <form method="POST" action="{{ route('verification.send') }}">
             @csrf
-
             <div>
-                <x-primary-button>
-                    {{ __('Resend Verification Email') }}
-                </x-primary-button>
+                <input type="submit" value="Выслать повторно письмо для подтверждения">
             </div>
         </form>
 
@@ -28,4 +25,4 @@
             </button>
         </form>
     </div>
-</x-guest-layout>
+@endsection

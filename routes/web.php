@@ -19,15 +19,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ArticleController::class, 'getArticles']);
-Route::get('/hello', function (){
-    return "Hello";
-});
 Route::get('/article/{id}', [ArticleController::class, 'getArticleById']);
 Route::view('/addArticle', 'pages.addArticle')->middleware('auth');
 Route::post('/addArticle', [ArticleController::class, 'addArticle'])->middleware('auth');
-Route::view('/profile', 'pages.profile')->middleware('auth');
+Route::view('/profile', 'pages.profile')->middleware('verified');
 Route::get('/deleteArticle/{id}', [ArticleController::class, 'deleteArticle'])->middleware('auth');
 Route::post('/addComment', [CommentController::class, 'addComment'])->middleware('auth');
+Route::post('/uploadAvatar', [ProfileController::class, 'uploadAvatar'])->middleware('auth');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

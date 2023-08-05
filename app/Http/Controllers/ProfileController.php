@@ -11,6 +11,12 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+    public function uploadAvatar(Request $request){
+        $path = $request->file('avatar')->store('public/avatars');
+
+        return $path;
+    }
+
     /**
      * Display the user's profile form.
      */

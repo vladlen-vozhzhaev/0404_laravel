@@ -1,7 +1,7 @@
 @extends('tepmplate')
 @section('title', 'Авторизация')
 @section('content')
-    <div class="col-sm-5 mx-auto">
+    <div class="col-sm-8 mx-auto">
         @if(count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -19,6 +19,9 @@
             <div class="mb-3">
                 <input name="password" type="password" class="form-control" placeholder="Пароль">
             </div>
+            <p>
+                <a href="/forgot-password">Восстановление пароля</a>
+            </p>
             <div class="mb-3">
                 <input type="submit" value="Войти" class="form-control btn btn-primary">
             </div>
